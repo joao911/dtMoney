@@ -1,14 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createServer } from "miragejs";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
+createServer({
+  routes() {
+    this.namespace = "api";
+    this.get("transactions", () => {
+      return [
+        {
+          id: 1,
+          title: "Transaction 01",
+          amount: 400,
+          type: "deposit",
+          category: "Food",
+          createAt: new Date(),
+        },
+      ];
+    });
+  },
+});
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
