@@ -7,6 +7,8 @@ const colors = {
   textTitle: "#363f5f",
   textBody: "#969cb3",
   shape: "#ffffff",
+  inputBorder: " #d7d7d7",
+  inputBackground: "#e7e9ee",
 };
 
 export default colors;

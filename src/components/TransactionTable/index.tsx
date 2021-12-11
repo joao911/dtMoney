@@ -5,7 +5,7 @@ import { Container } from "./styles";
 
 const TransactionTable: React.FC = () => {
   useEffect(() => {
-    api.get("/transactions").then((data) => console.log(data));
+    api.get("/transactions").then((response) => console.log(response.data));
   }, []);
 
   return (

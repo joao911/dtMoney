@@ -36,4 +36,37 @@ button{
     }
 }
 
+.button-close-modal{
+    position: absolute;
+    right: 1.5rem;
+    border:0;
+    top: 24px;
+    background-color: transparent ;
+    transition: .2s;
+    &:hover{
+        filter: brightness(.8)
+    }
+}
+
+.rect-modal{
+    position: fixed;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, .5);
+}
+.modal-content{
+    width: 100%;
+    max-width: 576px;
+    background-color:${colors.background} ;
+    padding: 3rem;
+    position: relative;
+    border-radius:.24rem;}
+
+
 `;
