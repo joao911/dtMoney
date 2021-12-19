@@ -27,3 +27,10 @@ export const Container = styled.div`
     }
   }
 `;
+
+interface AmountProps {
+  isWithDrown: boolean;
+}
+export const Amount = styled.td<AmountProps>`
+  color: ${(props) => (props.isWithDrown ? colors.red : colors.textBody)};
+`;

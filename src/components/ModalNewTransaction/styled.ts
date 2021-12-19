@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { darken } from "polished";
+import { darken, transparentize } from "polished";
 import colors from "../../styles/colors";
 
 export const Container = styled.form`
@@ -26,47 +26,51 @@ export const Container = styled.form`
     }
   }
 `;
-interface TransactionTypeContainerProps {
-  type: string;
-}
 
-export const TransactionTypeContainer = styled.div<TransactionTypeContainerProps>`
+export const TransactionTypeContainer = styled.div`
   margin: 1rem 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
+`;
 
-  button {
-    height: 4rem;
-    border: 1px solid ${colors.inputBorder};
-    border-radius: 0.25rem;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+interface RadioButtonProps {
+  isActive: boolean;
+  activeColor: "green" | "red";
+}
 
-    ${(props) =>
-      props.type === "deposit" &&
-      css`
-        background-color: ${colors.blueLight};
-      `}
+const color = {
+  green: "#33CC95",
+  red: "#E52E4D",
+};
 
-    img {
-      width: 20px;
-      height: 20px;
-    }
+export const RadioButton = styled.button<RadioButtonProps>`
+  height: 4rem;
+  border: 1px solid ${colors.inputBorder};
+  background-color: ${(props) =>
+    props.isActive
+      ? transparentize(0.8, color[props.activeColor])
+      : "transparent"};
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    span {
-      display: inline-block;
-      margin-left: 1rem;
-      font-size: 1rem;
-      color: ${colors.textTitle};
-    }
-    transition: border-color 0.2s;
+  img {
+    width: 20px;
+    height: 20px;
+  }
 
-    &:hover {
-      border-color: ${darken(0.1, colors.inputBorder)};
-    }
+  span {
+    display: inline-block;
+    margin-left: 1rem;
+    font-size: 1rem;
+    color: ${colors.textTitle};
+  }
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: ${darken(0.1, "#d7d7d7")};
   }
 `;
 export const Input = styled.input.attrs({
